@@ -1,0 +1,45 @@
+﻿@page "/setup/_entidades/entidades"
+@using Microsoft.AspNetCore.Authorization
+
+<RadzenStack>
+	<br />
+	<RadzenText TextStyle="TextStyle.H4">Entidad</RadzenText>
+
+    <EditForm Model="entidadDto" OnValidSubmit="HandleValidSubmit" FormName="Entidad">
+        <DataAnnotationsValidator />
+        <Project.Components.Pages.ErrorsValidator Errors="Errors" />
+        <ValidationSummary />
+        <RadzenCard class="rz-my-6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Start" Wrap="FlexWrap.Wrap">
+                <RadzenStack Orientation="Orientation.Vertical" Gap="4px">
+                    <RadzenLabel Text="Razon Social" />
+                    <RadzenTextBox Placeholder="Razón Social" @bind-Value="@entidadDto.RazonSocial" />
+                    <RadzenText TextStyle="TextStyle.Body2" class="--rz-danger-lighter">
+                        <ValidationMessage class="text-danger" For="@(() => entidadDto.RazonSocial)" />
+                    </RadzenText>
+                </RadzenStack>
+
+                <RadzenStack Orientation="Orientation.Vertical" Gap="4px">
+                    <RadzenLabel Text="RTN/ID" />
+                    <RadzenNumeric Min="0" Placeholder="RTN/ID" @bind-Value="@entidadDto.Documento" />
+                    <RadzenText TextStyle="TextStyle.Body2" class="--rz-danger-lighter">
+                        <ValidationMessage class="text-danger" For="@(() => entidadDto.Documento)" />
+                    </RadzenText>
+                </RadzenStack>
+
+                <RadzenStack Orientation="Orientation.Vertical" Gap="4px">
+                    <RadzenLabel Text="Tipo de Documento" />
+                    <RadzenNumeric Min="0" Placeholder="Tipo de Entidad" @bind-Value="@entidadDto.TipoEntidad" />
+                    <RadzenText TextStyle="TextStyle.Body2" class="--rz-danger-lighter">
+                        <ValidationMessage class="text-danger" For="@(() => entidadDto.TipoEntidad)" />
+                    </RadzenText>
+                </RadzenStack>
+            </RadzenStack>
+
+            <RadzenStack Orientation="Orientation.Vertical" Gap="4px">
+                <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Guardar" Variant="Variant.Flat" Disabled="DisabledBtn" />
+                <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancelar" Variant="Variant.Flat" />
+            </RadzenStack>
+        </RadzenCard>
+    </EditForm>
+</RadzenStack>

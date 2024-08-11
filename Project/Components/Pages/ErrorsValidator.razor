@@ -1,0 +1,21 @@
+﻿@if (Errors.Any())
+{
+	<RadzenAlert Title="Error de validación"
+				 AlertStyle="AlertStyle.Danger"
+				 Variant="Variant.Flat"
+				 Shade="Shade.Lighter"
+				 Size="AlertSize.Small"
+				 AllowClose="false">
+		<ul>
+			@foreach (var error in Errors)
+			{
+				<li>@error</li>
+			}
+		</ul>
+	</RadzenAlert>
+}
+
+@code {
+	[Parameter]
+	public string[] Errors { get; set; }
+}
